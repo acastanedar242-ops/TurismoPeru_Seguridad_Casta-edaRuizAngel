@@ -1,0 +1,21 @@
+USE master;
+GO
+
+-- Procedimiento de Restauración Completa y Diferencial
+ALTER DATABASE TURISMOPERU_ADCR SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
+-- Paso 1: Restaurar backup FULL con NORECOVERY
+RESTORE DATABASE TURISMOPERU_ADCR
+FROM DISK = 'F:\TurismoPeru_Seguridad_CastañedaRuizAngel\03_backups\TURISMOPERU_ADCR_Full.bak'
+WITH NORECOVERY, REPLACE;
+GO
+
+-- Paso 2: Aplicar backup Diferencial con RECOVERY final
+RESTORE DATABASE TURISMOPERU_ADCR
+FROM DISK = 'F:\TurismoPeru_Seguridad_CastañedaRuizAngel\03_backups\TURISMOPERU_ADCR_Diff.bak'
+WITH RECOVERY;
+GO
+
+ALTER DATABASE TURISMOPERU_ADCR SET MULTI_USER;
+GO
