@@ -1,0 +1,13 @@
+# Archivos de respaldo pesados
+*.bacpac
+*.bak
+
+# Entornos y credenciales (si se usa Python)
+venv/
+__pycache__/
+.env
+*.pyc
+
+# Temporales de sistema y VS Code
+.vscode/
+*.log
